@@ -15,7 +15,12 @@ export const PostList = () => {
         </article>
     ))
     return (
+
         <section className="posts-list">
+            <h1>What?</h1>
+            <Link to={`/quest/1`}>
+                Link
+            </Link>
             <h2>Posts</h2>
             {renderedPosts}
         </section>
