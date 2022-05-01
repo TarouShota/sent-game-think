@@ -1,10 +1,10 @@
 import { bindActionCreators, createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
-    { id: '1', quest: 'Who', content: '' },
-    { id: '2', quest: 'What', content: '' },
-    { id: '3', quest: 'When', content: '' },
-    { id: '4', quest: 'Where', content: 'aldyda' },
+    { id: '1', quest: 'who', content: '' },
+    { id: '2', quest: 'what', content: '' },
+    { id: '3', quest: 'when', content: '' },
+    { id: '4', quest: 'where', content: 'aldyda' },
 ]
 
 //Who?
@@ -29,10 +29,10 @@ const postsSlice = createSlice({
             state.push(action.payload)
         },
         postUpdated(state, action) {
-            const { id, title, content } = action.payload
-            const existingPost = state.find(post => post.id === id)
+            const { quest, content } = action.payload
+            const existingPost = state.find(post => post.quest === quest)
             if (existingPost) {
-                existingPost.title = title
+                // existingPost.title = title
                 existingPost.content = content
             }
         }
