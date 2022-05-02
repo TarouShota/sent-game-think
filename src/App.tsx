@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom'
 
 import { Navbar } from './app/Navbar'
-import { Result } from './features/posts/Result'
+import { Result } from './features/posts/Results'
+
 
 import { Who } from './features/posts/Who'
 

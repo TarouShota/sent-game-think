@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux"
+
 import React from "react";
 
+import { useAppSelector } from "../../app/hooks";
 
 /**
  * It's a function that takes the state of the redux store, maps over it, and returns the content of
@@ -13,10 +14,10 @@ import React from "react";
 
  * @returns The result of the map function.
  */
-export const Result = () => {
+export function Result() {
     let finalResult = ''
     let when = ''
-    const result = useSelector(state =>
+    const result = useAppSelector(state =>
         state.posts.map((post, index) => {
             if (index === 2) {
                 when = post.content

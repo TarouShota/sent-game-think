@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { postUpdated } from "./postSlice";
 import { validatorArray } from "../../app/Navbar";
-import { Result } from "./Result";
+import { Result } from "./Results";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+
 
 export const Who = ({ match }) => {
     // console.log(match)
+
     /* Destructuring the questId from the match.params object. */
     const { questId } = match.params;
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     /* Finding the questId in the state.posts array. */
-    const quest = useSelector((state) =>
+    const quest = useAppSelector((state) =>
         state.posts.find((post) => post.quest === questId)
     );
+    console.log(quest?.quest)
 
     /* Setting the state of the answer to an empty string. */
     const [answer, setAnswer] = useState({
@@ -23,6 +26,10 @@ export const Who = ({ match }) => {
         where: "",
     });
 
+    /**
+     * When the answer changes, set the answer to the current question id and the value of the input.
+     * @param e - the event object
+     */
     const onAnswerChanged = (e) =>
         setAnswer({ ...answer, [`${questId}`]: e.target.value });
 
@@ -35,18 +42,24 @@ export const Who = ({ match }) => {
      */
     const onSaveAnswer = () => {
         if (answer[questId]) {
-            dispatch(postUpdated({ quest: questId, content: answer[`${questId}`] }));
+            dispatch(postUpdated({
+                quest: questId, content: answer[`${questId}`],
+                state: undefined
+            }));
         }
 
     };
 
+    /* Checking if the validatorArray has any values greater than 0. If it does, it will return the
+    Result component. */
     if (validatorArray.every((x) => x > 0)) {
         return <Result />;
     }
 
+    //to input {quest.quest}
     return (
         <section className="main-section">
-            <h2 style={{ color: "white" }}>{quest.quest}?</h2>
+            <h2 style={{ color: "white" }}>{quest?.quest}?</h2>
             <form>
                 <label htmlFor="questInput"></label>
                 <input

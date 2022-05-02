@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "module": "esnext",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -9,9 +9,11 @@
     "removeComments": false,
     "noImplicitAny": false,
     "lib": [
+      // "ES5",
+      "es2015",
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
     ],
     "allowJs": true,
     "skipLibCheck": true,
