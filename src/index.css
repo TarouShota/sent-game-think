@@ -79,6 +79,7 @@ nav a:hover {
   margin-bottom: 3rem;
   display: flex;
   justify-content: space-between;
+  margin-right: 3.6rem;
 }
 
 .navLinks {
