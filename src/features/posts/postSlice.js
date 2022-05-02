@@ -4,7 +4,7 @@ const initialState = [
     { id: '1', quest: 'who', content: '' },
     { id: '2', quest: 'what', content: '' },
     { id: '3', quest: 'when', content: '' },
-    { id: '4', quest: 'where', content: 'aldyda' },
+    { id: '4', quest: 'where', content: '' },
 ]
 
 //Who?

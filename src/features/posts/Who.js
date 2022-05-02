@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postUpdated } from "./postSlice";
-import { useHistory } from "react-router-dom";
-import { What } from "./What";
-import { When } from "./When";
-import { Where } from "./Where";
+import { validatorArray } from "../../app/Navbar";
+import { Result } from "./Result";
 
 
 
@@ -15,10 +13,9 @@ export const Who = ({ match }) => {
 
 
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const quest = useSelector(state =>
-        state.posts.find(post => post.quest == questId) //     state.posts.find(post => post.id === postId))
+        state.posts.find(post => post.quest == questId)
     )
 
 
@@ -27,25 +24,35 @@ export const Who = ({ match }) => {
     console.log(quest)
     console.log(answer);
 
+
     const onAnswerChanged = e => setAnswer({ ...answer, [`${questId}`]: e.target.value })
 
     const onSaveAnswer = () => {
         if (answer[questId]) {
             dispatch(postUpdated({ quest: questId, content: answer[`${questId}`] }))
-            // setAnswer('')
-            // history.push(`/quests/${questId}`)
+
         }
+    }
+
+
+    if (validatorArray.every(x => x > 0)) {
+        return (
+            <Result />
+        )
     }
 
     return (
 
-        < section >
+        < section className="main-section">
 
-            <h2>{quest.quest}</h2>
+            <h2 style={{ color: 'white' }}>{quest.quest}?</h2>
             <form>
                 <label htmlFor="questInput"></label>
-                <input type='text' id='questInput' name="questInput" placeholder={answer[questId]} value={answer[questId]} onChange={onAnswerChanged}></input>
-                <button type="button" onClick={onSaveAnswer}></button>
+                <input type='text' id='questInput' name="questInput"
+                    placeholder={answer[questId]} value={answer[questId]}
+                    onChange={onAnswerChanged}></input>
+                <button type="button" className="button" onClick={onSaveAnswer}>Answer</button>
+
             </form>
         </section >
     )
@@ -55,20 +62,5 @@ export const Who = ({ match }) => {
 
 
 
-
-
-// <form>
-//                 <label htmlFor="postTitle">Post Title:</label>
-//                 <input type="text"
-//                     id="postTitle"
-//                     name="postTitle"
-//                     placeholder="What's on your mind?"
-//                     value={title}
-//                     onChange={onTitleChanged} />
-//                 <label htmlFor="postContent">Content:</label>
-//                 <textarea id="postContent" name="postContent" value={content} onChange={onContentChanged} />
-
-//             </form>
-//             <button type='button' onClick={onSavePostClicked}></button>
 
 
