@@ -5,11 +5,13 @@ import { Result } from "./Results";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 
-export const Who = ({ match }) => {
+
+export const Who = ({ match }): any => {
     // console.log(match)
 
     /* Destructuring the questId from the match.params object. */
     const { questId } = match.params;
+
     const dispatch = useAppDispatch();
 
     /* Finding the questId in the state.posts array. */
@@ -19,7 +21,7 @@ export const Who = ({ match }) => {
     console.log(quest?.quest)
 
     /* Setting the state of the answer to an empty string. */
-    const [answer, setAnswer] = useState({
+    const [answer, setAnswer] = useState<{ [key: string]: string }>({
         who: "",
         what: "",
         when: "",
@@ -30,7 +32,7 @@ export const Who = ({ match }) => {
      * When the answer changes, set the answer to the current question id and the value of the input.
      * @param e - the event object
      */
-    const onAnswerChanged = (e) =>
+    const onAnswerChanged = (e: { target: { value: any; }; }) =>
         setAnswer({ ...answer, [`${questId}`]: e.target.value });
 
 
@@ -43,8 +45,7 @@ export const Who = ({ match }) => {
     const onSaveAnswer = () => {
         if (answer[questId]) {
             dispatch(postUpdated({
-                quest: questId, content: answer[`${questId}`],
-                state: undefined
+                quest: questId, content: answer[`${questId}`]
             }));
         }
 

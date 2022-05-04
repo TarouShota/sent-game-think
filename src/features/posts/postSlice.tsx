@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface QuestState {
-    state?: object,
-    quest: string,
-    content: string,
-    [key: string]: any
+
+    [key: string]: string
 
 }
 /* Creating an array of objects. */

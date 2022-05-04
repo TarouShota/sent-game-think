@@ -28,8 +28,8 @@ export const Navbar = () => {
 
         <div className="navContent">
           <div className="navLinks"></div>
-          {/*A bit of repetetive code here*/}
 
+          {/*A bit of repetetive code here*/}
           <Link className={validatorArray[0] > 0 ? 'green-link' : 'red-link'} to="/quest/who">1</Link>
           <Link className={validatorArray[1] > 0 ? 'green-link' : 'red-link'} to='/quest/what'>2</Link>
           <Link className={validatorArray[2] > 0 ? 'green-link' : 'red-link'} to='/quest/when'>3</Link>
