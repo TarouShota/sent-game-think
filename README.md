@@ -1,10 +1,17 @@
 # Think-easy sentence game
-
+Forked css styling from Mark Erikson's Redux App 
 
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+To install all of the required packages, dependancies run:
+
+### `yarn install`
+
+
+Start the project after that, using:
 
 ### `yarn start`
 
